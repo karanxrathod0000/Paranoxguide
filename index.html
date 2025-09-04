@@ -7,33 +7,89 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #f1f5f9;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #3c4043;
         }
-        .gradient-text {
-            background-image: linear-gradient(to right, #ef4444, #f97316);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .google-blue { color: #4285F4; }
+        .google-red { color: #DB4437; }
+        .google-yellow { color: #F4B400; }
+        .google-green { color: #0F9D58; }
+
+        .bg-google-blue { background-color: #4285F4; }
+        .border-google-blue { border-color: #4285F4; }
+
+        .btn {
+            transition: all 0.2s ease-in-out;
         }
-        .gradient-border {
-            border: 2px solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to bottom right, #ef4444, #f97316);
+        .btn-primary {
+            background-color: #4285F4;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #3367D6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .btn-secondary {
+            background-color: #f1f3f4;
+            color: #3c4043;
+        }
+        .btn-secondary:hover {
+            background-color: #e8eaed;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #dadce0;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(60,64,67,0.15);
+            transform: translateY(-4px);
+        }
+        .faq-item .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-item.active .answer {
+            max-height: 200px; /* Adjust as needed */
+        }
+        .faq-item.active .icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Animation styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="py-4 px-6 text-center shadow-md shadow-red-500/10 sticky top-0 bg-black/50 backdrop-blur-sm z-50">
-        <h1 class="text-xl font-bold tracking-wider text-slate-300">
-            Your Official <span class="gradient-text">JIT Nashik Guide</span> to Paranox 2.O
-        </h1>
+    <header class="py-4 px-6 sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-lg font-bold tracking-wide text-gray-700">
+                <span class="google-blue">Paranox 2.O</span> | JIT Nashik Guide
+            </h1>
+            <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+                <a href="#ambassador" class="hover:text-google-blue">Ambassador</a>
+                <a href="#rewards" class="hover:text-google-blue">Prizes</a>
+                <a href="#timeline" class="hover:text-google-blue">Timeline</a>
+                <a href="#themes" class="hover:text-google-blue">Themes</a>
+                <a href="#faq" class="hover:text-google-blue">FAQ</a>
+            </nav>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -41,225 +97,292 @@
 
         <!-- Hero Section -->
         <section id="hero" class="text-center mb-20 md:mb-28">
-             <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center rounded-full bg-slate-800 border border-slate-700">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 gradient-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                 </svg>
-             </div>
-            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-                <span class="gradient-text">PARANOX 2.O</span>
+            <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center rounded-full bg-blue-100">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-google-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-gray-800">
+                <span>P</span><span class="google-blue">A</span><span class="google-red">R</span><span class="google-yellow">A</span><span class="google-blue">N</span><span class="google-green">O</span><span class="google-red">X</span> 2.O
             </h2>
-            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-8">
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Your 3-month national innovation journey to build, pitch, and grow your ideas into working prototypes.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                 <a href="https://unstop.com/o/anLRoXZ?lb=faXJ0iNR&utm_medium=Share&utm_source=karanrat94324&utm_campaign=Innovation_challenge" target="_blank" class="inline-block bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-red-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                <a href="https://unstop.com/o/anLRoXZ?lb=faXJ0iNR&utm_medium=Share&utm_source=karanrat94324&utm_campaign=Innovation_challenge" target="_blank" class="btn btn-primary font-bold py-3 px-8 rounded-lg shadow-md transform hover:-translate-y-1">
                     Register Via My Referral Link
                 </a>
             </div>
-            <div id="countdown-container" class="mt-10 max-w-2xl mx-auto bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-                <p class="text-sm font-semibold text-orange-400 mb-2">REGISTRATION CLOSES IN</p>
-                <div id="countdown" class="text-3xl md:text-4xl font-mono font-bold tracking-widest text-slate-100"></div>
+            <div id="countdown-container" class="mt-10 max-w-2xl mx-auto bg-gray-100 border border-gray-200 rounded-xl p-4">
+                <p class="text-sm font-semibold text-gray-500 mb-2 tracking-widest">REGISTRATION CLOSES IN</p>
+                <div id="countdown" class="text-3xl md:text-4xl font-bold text-gray-800 flex justify-center items-center space-x-4"></div>
             </div>
         </section>
         
         <!-- Meet Your Ambassador Section -->
-        <section id="ambassador" class="mb-20 md:mb-28">
-            <div class="max-w-4xl mx-auto bg-slate-900 gradient-border rounded-2xl p-8 md:p-12 text-center transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div class="w-28 h-28 mx-auto mb-6 flex items-center justify-center rounded-full bg-slate-800 border-2 border-orange-500 text-orange-400 text-4xl font-bold">
-                     KR
-                </div>
-                <h3 class="text-3xl font-bold mb-2">Your Campus Ambassador</h3>
-                <h4 class="text-4xl font-extrabold gradient-text mb-4">Karan Rathod</h4>
-                <p class="text-slate-500 font-medium mb-4">Jawahar Education Society's Institute of Technology Management and Research, Nashik</p>
-                <p class="text-slate-400 mb-6 max-w-2xl mx-auto">
+        <section id="ambassador" class="mb-20 md:mb-28 reveal">
+            <div class="max-w-4xl mx-auto card p-8 md:p-12 text-center">
+                <img src="https://placehold.co/112x112/E8F0FE/4285F4?text=KR&font=roboto" alt="Karan Rathod Avatar" class="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-white shadow-md">
+                <h3 class="text-2xl font-bold text-gray-500 mb-1">Your Campus Ambassador</h3>
+                <h4 class="text-4xl font-extrabold text-google-blue mb-4">Karan Rathod</h4>
+                <p class="text-gray-500 font-medium mb-4">Jawahar Education Society's Institute of Technology Management and Research, Nashik</p>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
                     "Hey JIT Nashik Innovators! I'm Karan, your official guide for Paranox 2.O. As a B.Tech student passionate about AI and with internship experience at Google, AWS, and Deloitte, my mission is to help you succeed in this hackathon. This is our chance to represent our college and turn brilliant ideas into reality. Don't hesitate to reach out to me with any questions or for guidance!"
                 </p>
                 <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="https://www.linkedin.com/in/karan-rathod-012b9a268" target="_blank" class="inline-block bg-sky-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-sky-500 transition-colors duration-300">
+                    <a href="https://www.linkedin.com/in/karan-rathod-012b9a268" target="_blank" class="btn btn-primary font-semibold py-2 px-6 rounded-lg">
                         Connect on LinkedIn
                     </a>
-                    <a href="mailto:karankailashrathod9765@gmail.com" class="inline-block bg-slate-700 text-white font-semibold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors duration-300">
+                    <a href="mailto:karankailashrathod9765@gmail.com" class="btn btn-secondary font-semibold py-2 px-6 rounded-lg">
                         Email Me for Info
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- What You'll Gain -->
-        <section id="gain" class="mb-20 md:mb-28">
-            <h3 class="text-3xl font-bold text-center mb-12">What You'll Gain (Beyond Prizes)</h3>
+        <!-- Rewards & Perks Section -->
+        <section id="rewards" class="mb-20 md:mb-28">
+            <div class="text-center mb-12 reveal">
+                <h3 class="text-3xl font-bold text-gray-800">Rewards & Perks</h3>
+                <p class="text-gray-600 mt-2">Compete for a massive prize pool and win exclusive opportunities, swag, and more.</p>
+            </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl transform hover:scale-105 transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3">Portfolio Power-Up</h4>
-                    <p class="text-slate-400">Create a real, working project to showcase to recruiters and demonstrate your practical skills.</p>
+                <!-- Prize Cards -->
+                <div class="card p-8 reveal" style="transition-delay: 100ms;">
+                    <h4 class="font-bold text-xl text-google-yellow">Top Winner</h4>
+                    <p class="text-3xl font-extrabold my-2 text-gray-800">Rs. 15,000</p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Certificate of Excellence</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Internship/Job Opportunities</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Free Merchandise & Goodies</li>
+                    </ul>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl transform hover:scale-105 transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3">Skill Development</h4>
-                    <p class="text-slate-400">Learn new technologies, master teamwork, and sharpen your problem-solving abilities under pressure.</p>
+                <div class="card p-8 reveal" style="transition-delay: 200ms;">
+                    <h4 class="font-bold text-xl text-gray-500">1st Runner Up</h4>
+                    <p class="text-3xl font-extrabold my-2 text-gray-800">Rs. 10,000</p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                         <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Certificate & PPI Opportunities</li>
+                         <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Free Merchandise & Goodies</li>
+                    </ul>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl transform hover:scale-105 transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3">Networking Opportunities</h4>
-                    <p class="text-slate-400">Connect with mentors, judges, and fellow innovators from across the country during the finale.</p>
+                <div class="card p-8 reveal" style="transition-delay: 300ms;">
+                    <h4 class="font-bold text-xl text-yellow-700">2nd Runner Up</h4>
+                    <p class="text-3xl font-extrabold my-2 text-gray-800">Rs. 5,000</p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Certificate & PPI Opportunities</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Free Merchandise & Goodies</li>
+                    </ul>
+                </div>
+                <div class="card p-8 reveal" style="transition-delay: 100ms;">
+                    <h4 class="font-bold text-xl text-google-red">Best ONLY Girls Team</h4>
+                    <p class="text-3xl font-extrabold my-2 text-gray-800">Rs. 5,000</p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Certificate & PPI Opportunities</li>
+                    </ul>
+                </div>
+                <div class="card p-8 reveal" style="transition-delay: 200ms;">
+                    <h4 class="font-bold text-xl text-google-blue">Special Awards</h4>
+                    <p class="text-3xl font-extrabold my-2 text-gray-800">Rs. 2,500</p>
+                     <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Best UI/UX Design Team</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Pitch Excellence Award</li>
+                    </ul>
+                </div>
+                 <div class="card p-8 reveal" style="transition-delay: 300ms;">
+                    <h4 class="font-bold text-xl text-google-green">All Participants</h4>
+                    <p class="text-xl font-bold my-2 text-gray-800">Get Recognized</p>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Certificate of Participation</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Access to learning groups</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Timeline Section -->
         <section id="timeline" class="mb-20 md:mb-28">
-            <h3 class="text-3xl font-bold text-center mb-16">Your Roadmap to the Finale</h3>
-            <div class="relative max-w-2xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                 <h3 class="text-3xl font-bold text-gray-800">Full Timeline</h3>
+                 <p class="text-gray-600 mt-2">Follow our journey from the initial launch to the grand finale.</p>
+            </div>
+            <div class="relative max-w-3xl mx-auto">
                 <!-- Vertical Line -->
-                <div class="absolute left-4 md:left-1/2 top-0 h-full w-0.5 bg-slate-700"></div>
+                <div class="absolute left-9 md:left-1/2 top-0 h-full w-0.5 bg-gray-300"></div>
                 
-                <!-- Timeline Item 1 -->
-                <div class="relative mb-12">
-                    <div class="absolute left-4 md:left-1/2 top-1.5 -ml-4 w-8 h-8 rounded-full bg-slate-800 border-2 border-orange-500 flex items-center justify-center">
-                        <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div class="space-y-16">
+                    <!-- Timeline Items -->
+                    <div class="relative reveal">
+                         <div class="absolute left-9 md:left-1/2 top-2 -ml-5 w-10 h-10 rounded-full bg-white border-4 border-google-blue flex items-center justify-center font-bold text-google-blue text-lg"></div>
+                         <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-8 md:text-right">
+                                <p class="font-bold text-xl text-google-blue">20th Aug</p>
+                                <p class="text-gray-500">Phase 1</p>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 ml-20 md:ml-0">
+                                <h4 class="font-bold text-lg text-gray-900">Event Launch & Registration</h4>
+                                <p class="text-gray-600 text-sm">Official launch of the hackathon via a live session, explaining the overview, structure, and platform.</p>
+                            </div>
+                         </div>
                     </div>
-                    <div class="ml-12 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                        <p class="font-bold text-lg text-orange-400">Phase 1: Registration</p>
-                        <p class="text-slate-400">20th Aug - 14th Sep 2025</p>
+                    <div class="relative reveal">
+                         <div class="absolute left-9 md:left-1/2 top-2 -ml-5 w-10 h-10 rounded-full bg-white border-4 border-google-yellow flex items-center justify-center font-bold text-google-yellow text-lg"></div>
+                         <div class="md:flex items-center md:flex-row-reverse">
+                             <div class="md:w-1/2 md:pl-8 md:text-left">
+                                <p class="font-bold text-xl text-google-yellow">14th Sep</p>
+                                <p class="text-gray-500">Phase 2</p>
+                            </div>
+                            <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 ml-20 md:ml-0 md:text-right">
+                                <h4 class="font-bold text-lg text-gray-900">Idea Submission Starts</h4>
+                                <p class="text-gray-600 text-sm">Participants can start submitting their innovative project ideas for evaluation.</p>
+                            </div>
+                         </div>
                     </div>
-                </div>
-                
-                <!-- Timeline Item 2 -->
-                <div class="relative mb-12">
-                    <div class="absolute left-4 md:left-1/2 top-1.5 -ml-4 w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-500 flex items-center justify-center">
-                        <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
+                     <div class="relative reveal">
+                         <div class="absolute left-9 md:left-1/2 top-2 -ml-5 w-10 h-10 rounded-full bg-white border-4 border-google-red flex items-center justify-center font-bold text-google-red text-lg"></div>
+                         <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-8 md:text-right">
+                                <p class="font-bold text-xl text-google-red">20th Sep</p>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 ml-20 md:ml-0">
+                                <h4 class="font-bold text-lg text-gray-900">Midway Engagement Session</h4>
+                                <p class="text-gray-600 text-sm">Live session to solve doubts, showcase ongoing work, and build momentum.</p>
+                            </div>
+                         </div>
                     </div>
-                    <div class="ml-12 md:ml-auto md:w-1/2 md:pl-8">
-                        <p class="font-bold text-lg">Phase 2: Idea Submission</p>
-                        <p class="text-slate-400">14th Sep - 30th Sep 2025</p>
-                    </div>
-                </div>
-                
-                <!-- Timeline Item 3 -->
-                <div class="relative">
-                    <div class="absolute left-4 md:left-1/2 top-1.5 -ml-4 w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-500 flex items-center justify-center">
-                         <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
-                    </div>
-                    <div class="ml-12 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                        <p class="font-bold text-lg">Phase 3: Grand Finale</p>
-                        <p class="text-slate-400">25th Oct 2025 (Delhi NCR)</p>
+                     <div class="relative reveal">
+                         <div class="absolute left-9 md:left-1/2 top-2 -ml-5 w-10 h-10 rounded-full bg-white border-4 border-google-green flex items-center justify-center font-bold text-google-green text-lg"></div>
+                         <div class="md:flex items-center md:flex-row-reverse">
+                             <div class="md:w-1/2 md:pl-8 md:text-left">
+                                <p class="font-bold text-xl text-google-green">25th Oct</p>
+                                <p class="text-gray-500">Phase 3</p>
+                            </div>
+                            <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 ml-20 md:ml-0 md:text-right">
+                                <h4 class="font-bold text-lg text-gray-900">Grand Finale</h4>
+                                <p class="text-gray-600 text-sm">Finale in Delhi NCR with mentorship, guidance, and final results announcement.</p>
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Tracks & Themes Section -->
+        <section id="themes" class="mb-20 md:mb-28">
+            <div class="text-center mb-12 reveal">
+                <h3 class="text-3xl font-bold text-gray-800">Tracks & Themes</h3>
+                <p class="text-gray-600 mt-2">Explore diverse domains where your innovation can make a difference.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 text-center reveal" style="transition-delay: 100ms;">
+                    <h4 class="font-bold text-lg text-gray-900">Smart Cities</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 150ms;">
+                    <h4 class="font-bold text-lg text-gray-900">Cybersecurity</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 200ms;">
+                    <h4 class="font-bold text-lg text-gray-900">EdTech</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 250ms;">
+                    <h4 class="font-bold text-lg text-gray-900">AI for Finance</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 300ms;">
+                    <h4 class="font-bold text-lg text-gray-900">AR/VR for Education</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 350ms;">
+                    <h4 class="font-bold text-lg text-gray-900">IoT Smart Campus</h4>
+                </div>
+                 <div class="card p-6 text-center reveal" style="transition-delay: 400ms;">
+                    <h4 class="font-bold text-lg text-gray-900">Social Impact</h4>
+                </div>
+                <div class="card p-6 text-center reveal" style="transition-delay: 450ms;">
+                    <h4 class="font-bold text-lg text-gray-900">Data-Driven Dev</h4>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-8 reveal">NOTE: Problem statements will be released when the Idea Submission Phase starts.</p>
         </section>
         
         <!-- FAQ Section -->
-        <section id="faq" class="mb-20 md:mb-28 max-w-3xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h3>
+        <section id="faq" class="mb-20 md:mb-28 max-w-3xl mx-auto reveal">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h3>
             <div class="space-y-4">
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
-                    <h4 class="font-bold text-lg mb-2 text-orange-400">Who is eligible to participate?</h4>
-                    <p class="text-slate-400">The hackathon is open to all university students across India. As long as you are enrolled in a college program, you are welcome to join.</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
-                    <h4 class="font-bold text-lg mb-2 text-orange-400">Is there a registration fee?</h4>
-                    <p class="text-slate-400">No, participation in Paranox 2.O is completely free of charge. We believe innovation should be accessible to everyone.</p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
-                    <h4 class="font-bold text-lg mb-2 text-orange-400">Do I need to be a coder to join?</h4>
-                    <p class="text-slate-400">Not at all! Teams need a mix of skills. Designers, project managers, and business-minded students are just as valuable as coders. A diverse team is a strong team.</p>
-                </div>
-                 <div class="bg-slate-900 border border-slate-800 p-6 rounded-lg">
-                    <h4 class="font-bold text-lg mb-2 text-orange-400">What if I don't have a team?</h4>
-                    <p class="text-slate-400">Don't worry! You can reach out to me, and I can help connect you with other students from JIT Nashik who are looking for team members.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- How to Participate Guide -->
-        <section id="guide" class="mb-20 md:mb-28">
-            <h3 class="text-3xl font-bold text-center mb-12">A Simple 5-Step Guide to Participate</h3>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <!-- Step 1 -->
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 border-2 border-red-500 text-red-500 font-bold text-xl">1</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-1">Form Your A-Team</h4>
-                        <p class="text-slate-400">Assemble a team of 3 to 5 passionate innovators. Diversity in skills is your greatest strength!</p>
+                <div class="faq-item card rounded-lg">
+                    <button class="question w-full flex justify-between items-center text-left p-6">
+                        <h4 class="font-bold text-lg text-gray-800">Who is eligible to participate?</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="answer px-6 pb-6">
+                        <p class="text-gray-600">The hackathon is open to all university students across India. As long as you are enrolled in a college program, you are welcome to join.</p>
                     </div>
                 </div>
-                <!-- Step 2 -->
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 border-2 border-orange-500 text-orange-500 font-bold text-xl">2</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-1">Register Before the Deadline</h4>
-                        <p class="text-slate-400">Use the referral link on this page to fill in your team details and secure your spot. Don't wait until the last minute!</p>
+                <div class="faq-item card rounded-lg">
+                    <button class="question w-full flex justify-between items-center text-left p-6">
+                        <h4 class="font-bold text-lg text-gray-800">Is there a registration fee?</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="answer px-6 pb-6">
+                        <p class="text-gray-600">No, participation in Paranox 2.O is completely free of charge. We believe innovation should be accessible to everyone.</p>
                     </div>
                 </div>
-                <!-- Step 3 -->
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 border-2 border-yellow-500 text-yellow-500 font-bold text-xl">3</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-1">Brainstorm & Submit Your Idea</h4>
-                        <p class="text-slate-400">Once registered, work with your team to brainstorm a groundbreaking idea and submit it before the submission deadline.</p>
+                <div class="faq-item card rounded-lg">
+                    <button class="question w-full flex justify-between items-center text-left p-6">
+                        <h4 class="font-bold text-lg text-gray-800">Do I need to be a coder to join?</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="answer px-6 pb-6">
+                        <p class="text-gray-600">Not at all! Teams need a mix of skills. Designers, project managers, and business-minded students are just as valuable as coders. A diverse team is a strong team.</p>
                     </div>
                 </div>
-                <!-- Step 4 -->
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 border-2 border-green-500 text-green-500 font-bold text-xl">4</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-1">Develop Your Prototype</h4>
-                        <p class="text-slate-400">If your idea is shortlisted, it's time to code, design, and build! Turn your vision into a functional prototype.</p>
-                    </div>
-                </div>
-                <!-- Step 5 -->
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 border-2 border-sky-500 text-sky-500 font-bold text-xl">5</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-1">Compete in the Grand Finale</h4>
-                        <p class="text-slate-400">The best teams will be invited to the offline Grand Finale in Delhi NCR to pitch their projects to judges and win!</p>
+                 <div class="faq-item card rounded-lg">
+                    <button class="question w-full flex justify-between items-center text-left p-6">
+                        <h4 class="font-bold text-lg text-gray-800">What if I don't have a team?</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 text-gray-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="answer px-6 pb-6">
+                        <p class="text-gray-600">Don't worry! You can reach out to me, and I can help connect you with other students from JIT Nashik who are looking for team members.</p>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <!-- Details Section -->
-        <section id="details" class="bg-slate-900 border border-slate-800 p-8 md:p-12 rounded-2xl">
-             <h3 class="text-3xl font-bold text-center mb-10">Hackathon at a Glance</h3>
+        <section id="details" class="card p-8 md:p-12 reveal">
+             <h3 class="text-3xl font-bold text-center mb-10 text-gray-800">Hackathon at a Glance</h3>
              <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="text-sm text-slate-400 mb-1">Team Size</p>
-                    <p class="text-xl font-bold gradient-text">3 - 5 Members</p>
-                </div>
-                <div>
-                    <p class="text-sm text-slate-400 mb-1">Mode</p>
-                    <p class="text-xl font-bold">Online + Offline</p>
-                </div>
-                <div>
-                    <p class="text-sm text-slate-400 mb-1">Finale Location</p>
-                    <p class="text-xl font-bold">Delhi NCR</p>
-                </div>
-                <div>
-                    <p class="text-sm text-slate-400 mb-1">Organized By</p>
-                    <p class="text-xl font-bold">TechXNinjas</p>
-                </div>
+                 <div>
+                     <p class="text-sm text-gray-500 mb-1">Team Size</p>
+                     <p class="text-xl font-bold text-google-blue">3 - 5 Members</p>
+                 </div>
+                 <div>
+                     <p class="text-sm text-gray-500 mb-1">Mode</p>
+                     <p class="text-xl font-bold text-gray-800">Online + Offline</p>
+                 </div>
+                 <div>
+                     <p class="text-sm text-gray-500 mb-1">Finale Location</p>
+                     <p class="text-xl font-bold text-gray-800">Delhi NCR</p>
+                 </div>
+                 <div>
+                     <p class="text-sm text-gray-500 mb-1">Organized By</p>
+                     <p class="text-xl font-bold text-gray-800">TechXNinjas</p>
+                 </div>
              </div>
              <div class="mt-12 text-center">
-                 <a href="https://lnkd.in/dX85-PXC" target="_blank" class="inline-block border-2 border-orange-500 text-orange-500 font-bold py-3 px-8 rounded-lg hover:bg-orange-500 hover:text-white transition-colors duration-300">
-                    Visit Official Website
-                </a>
+                 <a href="https://lnkd.in/dX85-PXC" target="_blank" class="btn btn-secondary font-bold py-3 px-8 rounded-lg border border-gray-300">
+                     Visit Official Website
+                 </a>
              </div>
         </section>
-
     </main>
 
     <!-- Footer -->
-    <footer class="text-center p-8 mt-12 border-t border-slate-800">
-        <p class="text-slate-400 mb-2">For JIT Nashik campus questions, DM <span class="font-semibold text-slate-300">Karan Rathod</span> on LinkedIn.</p>
-        <p class="text-slate-400">For official queries: <span class="font-semibold text-slate-300">+91 91229 85472</span> or <span class="font-semibold text-slate-300">support@techxninjas.com</span></p>
-        <p class="text-slate-500 mt-4 text-sm">&copy; 2025 TechXNinjas. Let's build the future.</p>
+    <footer class="text-center p-8 mt-12 bg-gray-100 border-t border-gray-200">
+        <p class="text-gray-600 mb-2">For JIT Nashik campus questions, DM <span class="font-semibold text-gray-800">Karan Rathod</span> on LinkedIn.</p>
+        <p class="text-gray-600">For official queries: <span class="font-semibold text-gray-800">+91 91229 85472</span> or <span class="font-semibold text-gray-800">support@techxninjas.com</span></p>
+        <p class="text-gray-500 mt-4 text-sm">&copy; 2025 TechXNinjas. Let's build the future.</p>
     </footer>
 
-    <!-- JavaScript for Countdown Timer -->
+    <!-- JavaScript -->
     <script>
+        // --- Countdown Timer ---
         const countdownElement = document.getElementById('countdown');
         const countdownContainer = document.getElementById('countdown-container');
-        
-        // Set the date we're counting down to
         const countDownDate = new Date("Sep 14, 2025 23:59:59").getTime();
 
         const updateCountdown = () => {
@@ -268,7 +391,7 @@
 
             if (distance < 0) {
                 countdownElement.innerHTML = "REGISTRATION CLOSED";
-                countdownContainer.classList.add('bg-red-900/50', 'border-red-700');
+                countdownElement.classList.add('text-google-red');
                 countdownContainer.querySelector('p').textContent = 'SEE YOU NEXT TIME!';
                 clearInterval(interval);
                 return;
@@ -279,20 +402,42 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = 
-                `<span class="mx-2">${String(days).padStart(2, '0')}d</span>` +
-                `<span class="mx-2">${String(hours).padStart(2, '0')}h</span>` +
-                `<span class="mx-2">${String(minutes).padStart(2, '0')}m</span>` +
-                `<span class="mx-2">${String(seconds).padStart(2, '0')}s</span>`;
+            countdownElement.innerHTML = `
+                <div><span class="font-black">${String(days).padStart(2, '0')}</span><span class="text-xs text-gray-500">days</span></div><div>:</div>
+                <div><span class="font-black">${String(hours).padStart(2, '0')}</span><span class="text-xs text-gray-500">hours</span></div><div>:</div>
+                <div><span class="font-black">${String(minutes).padStart(2, '0')}</span><span class="text-xs text-gray-500">mins</span></div><div>:</div>
+                <div><span class="font-black">${String(seconds).padStart(2, '0')}</span><span class="text-xs text-gray-500">secs</span></div>
+            `;
         };
-        
-        // Update the count down every 1 second
         const interval = setInterval(updateCountdown, 1000);
-        
-        // Initial call
         updateCountdown();
+
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+        
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+
+        const elementsToReveal = document.querySelectorAll('.reveal');
+        elementsToReveal.forEach(el => observer.observe(el));
+
     </script>
 </body>
 </html>
-
 
