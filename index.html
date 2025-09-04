@@ -13,6 +13,7 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
             color: #3c4043;
+            overflow-x: hidden; /* Prevents horizontal scroll */
         }
         .google-blue { color: #4285F4; }
         .google-red { color: #DB4437; }
@@ -110,6 +111,11 @@
             background-image: linear-gradient(to right, #4285F4, #DB4437, #F4B400, #0F9D58);
             margin: 12px auto 0;
         }
+        .gradient-border-bg {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4285f4, #db4437, #f4b400, #0f9d58) border-box;
+            border-radius: 1rem; /* 16px */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -132,7 +138,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6">
+    <main class="container mx-auto px-4 sm:px-6">
 
         <!-- Hero / Ambassador Section -->
         <section id="ambassador" class="pt-20 pb-12 md:pt-28 md:pb-20">
@@ -145,14 +151,20 @@
                     <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto md:mx-0 mb-8">
                         Your 3-month national innovation journey to build, pitch, and grow your ideas.
                     </p>
-                    <a href="https://unstop.com/o/anLRoXZ?lb=faXJ0iNR&utm_medium=Share&utm_source=karanrat94324&utm_campaign=Innovation_challenge" target="_blank" class="inline-flex items-center gap-2 btn btn-primary font-bold py-3 px-8 rounded-full shadow-lg transform hover:-translate-y-1 mb-10">
-                        Register Now
+                    <a href="https://unstop.com/o/anLRoXZ?lb=faXJ0iNR&utm_medium=Share&utm_source=karanrat94324&utm_campaign=Innovation_challenge" target="_blank" class="inline-flex items-center gap-2 btn btn-primary font-bold py-3 px-6 rounded-full shadow-lg transform hover:-translate-y-1 mb-10 text-base">
+                        Register Via My Referral Link
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     </a>
                     <div class="p-6 rounded-2xl bg-white border border-gray-200">
-                        <h3 class="text-lg font-bold text-google-blue">Your JIT Nashik Campus Ambassador</h3>
+                        <h3 class="text-lg font-bold text-google-blue">Your Campus Ambassador</h3>
                         <p class="text-2xl font-bold text-gray-800 mt-1">Karan Rathod</p>
-                        <p class="text-gray-500 text-sm mt-2">B.Tech Student | AI Enthusiast | Ex-Intern @ Google, AWS, Deloitte</p>
+                        <p class="text-gray-500 text-sm mt-2">Jawahar Education Society's Institute of Technology Management and Research, Nashik</p>
+                        <div class="mt-4 text-center md:text-left">
+                            <a href="https://www.linkedin.com/in/karan-rathod-012b9a268" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-google-blue transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                Connect on LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Right Column: Image -->
@@ -160,9 +172,9 @@
                      <img src="https://raw.githubusercontent.com/karanxrathod0000/Paranoxguide/main/Black%20Simple%20Minimalist%20Professional%20Corporate%20Facebook%20Profile%20Picture%20(2).png" alt="Karan Rathod Avatar" class="w-64 h-64 md:w-80 md:h-80 object-cover mx-auto rounded-full border-8 border-white shadow-2xl transition-transform duration-300 hover:scale-105">
                 </div>
             </div>
-            <div id="countdown-container" class="mt-20 max-w-3xl mx-auto card p-4 reveal">
-                <p class="text-sm font-semibold text-gray-500 mb-2 tracking-widest text-center">REGISTRATION CLOSES IN</p>
-                <div id="countdown" class="text-3xl md:text-4xl font-bold text-gray-800 flex justify-center items-center space-x-4"></div>
+            <div id="countdown-container" class="mt-20 max-w-3xl mx-auto gradient-border-bg p-4 sm:p-6 reveal overflow-hidden">
+                <p class="text-sm font-semibold text-gray-500 mb-4 tracking-widest text-center">REGISTRATION CLOSES IN</p>
+                <div id="countdown" class="text-2xl sm:text-3xl md:text-4xl font-bold flex justify-center items-center space-x-2 sm:space-x-4"></div>
             </div>
         </section>
 
@@ -383,7 +395,7 @@
         
     </main>
 
-    <!-- Footer -->
+        <!-- Footer -->
     <footer class="text-center p-8 mt-12 bg-gray-100 border-t border-gray-200">
         <h3 class="text-2xl font-bold text-gray-800">Let's Build the Future Together</h3>
         <p class="text-gray-600 mt-2 mb-6 max-w-xl mx-auto">Join our community to get updates, find teammates, and ask questions.</p>
@@ -417,10 +429,10 @@
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((distance % (1000 * 60)) / 1000);
             countdownElement.innerHTML = `
-                <div><span class="font-black">${String(d).padStart(2, '0')}</span><span class="text-xs text-gray-500">days</span></div><div>:</div>
-                <div><span class="font-black">${String(h).padStart(2, '0')}</span><span class="text-xs text-gray-500">hours</span></div><div>:</div>
-                <div><span class="font-black">${String(m).padStart(2, '0')}</span><span class="text-xs text-gray-500">mins</span></div><div>:</div>
-                <div><span class="font-black">${String(s).padStart(2, '0')}</span><span class="text-xs text-gray-500">secs</span></div>
+                <div class="text-center google-blue"><span class="font-black">${String(d).padStart(2, '0')}</span><span class="block text-xs text-gray-500 font-medium">days</span></div><div class="text-gray-400 text-3xl pb-3">:</div>
+                <div class="text-center google-red"><span class="font-black">${String(h).padStart(2, '0')}</span><span class="block text-xs text-gray-500 font-medium">hours</span></div><div class="text-gray-400 text-3xl pb-3">:</div>
+                <div class="text-center google-yellow"><span class="font-black">${String(m).padStart(2, '0')}</span><span class="block text-xs text-gray-500 font-medium">mins</span></div><div class="text-gray-400 text-3xl pb-3">:</div>
+                <div class="text-center google-green"><span class="font-black">${String(s).padStart(2, '0')}</span><span class="block text-xs text-gray-500 font-medium">secs</span></div>
             `;
         }, 1000);
 
@@ -463,4 +475,5 @@
     </script>
 </body>
 </html>
+
 
