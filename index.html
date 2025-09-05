@@ -116,6 +116,33 @@
             background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4285f4, #db4437, #f4b400, #0f9d58) border-box;
             border-radius: 1rem; /* 16px */
         }
+
+        /* Glowing Avatar Border */
+        .avatar-container {
+            position: relative;
+            padding: 6px; /* Space for the glow */
+        }
+        .avatar-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #4285F4,
+                #DB4437,
+                #F4B400,
+                #0F9D58,
+                #4285F4
+            );
+            filter: blur(12px);
+            z-index: 0;
+            animation: rotateGlow 4s linear infinite;
+        }
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -168,8 +195,10 @@
                     </div>
                 </div>
                 <!-- Right Column: Image -->
-                <div class="md:col-span-2 reveal" style="transition-delay: 200ms;">
-                     <img src="https://raw.githubusercontent.com/karanxrathod0000/Paranoxguide/main/Black%20Simple%20Minimalist%20Professional%20Corporate%20Facebook%20Profile%20Picture1.png" alt="Karan Rathod Avatar" class="w-64 h-64 md:w-80 md:h-80 object-cover mx-auto rounded-full border-8 border-white shadow-2xl transition-transform duration-300 hover:scale-105">
+                <div class="md:col-span-2 flex justify-center items-center reveal" style="transition-delay: 200ms;">
+                    <div class="avatar-container w-fit">
+                         <img src="https://raw.githubusercontent.com/karanxrathod0000/karan_jit_paranox/main/Black%20Simple%20Minimalist%20Professional%20Corporate%20Facebook%20Profile%20Picture%203.png" alt="Karan Rathod Avatar" class="relative z-10 w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-8 border-white shadow-2xl transition-transform duration-300 hover:scale-105">
+                    </div>
                 </div>
             </div>
             <div id="countdown-container" class="mt-20 max-w-3xl mx-auto gradient-border-bg p-4 sm:p-6 reveal overflow-hidden">
@@ -475,6 +504,5 @@
     </script>
 </body>
 </html>
-
 
 
